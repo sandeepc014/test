@@ -1,23 +1,8 @@
-pipeline {
-  agent {
-    node {
-      label 'ultron_stage'
-    }
-  }
-  stages {
-    stage('Running script') {
-      steps {
-            sh 'cd /var/www/decomission/test'
-      }
-    }
-  }
+#!/bin/bash
 
-stages {
-    stage('Running script') {
-      steps {
-            sh 'git fetch --all && git checkout composer.lock && git stash && git checkout v8.4.1 && git stash pop'
-      }
-    }
-  }
-}
+cd /var/www/decomission/test/
+
+git fetch --all && git checkout composer.lock && git stash && git checkout v8.4.1 && git stash pop
+
+sudo chown -R ubuntu:www-data storage/ bootstrap/ && sudo chmod -R 775 storage/ bootstrap/
 
