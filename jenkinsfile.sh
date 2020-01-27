@@ -6,8 +6,8 @@ git fetch --all && git checkout composer.lock && git stash && git checkout v8.7.
 
 sudo chown -R ubuntu:www-data storage/ bootstrap/ && sudo chmod -R 775 storage/ bootstrap/
 
-read ver
+read site_version
 
-sed '6 s/.*/APP_SITE_VERSION="'$ver'"/' .env
+sed '6 s/.*/APP_SITE_VERSION="'$site_version'"/' .env
 
 
